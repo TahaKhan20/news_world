@@ -1,9 +1,16 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import Nav1 from './components/navbar';
+import Home from './components/home'
 function App() {
   return (
     <div className="App">
-        <h1>News World</h1>
+      
+        <Nav1 />
+        
+        <Routes>
+            <Route path = '/home' element = {<Home />}></Route>
+        </Routes>
     </div>
   );
 }
