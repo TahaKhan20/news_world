@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import './navbar.css'
-const Nav1 = () =>{
+import SearchBar from './searchbar'
+const Nav1 = ({onSearch}) =>{
     const[dropdownCategoriesVisible, setDropdownCategoriesVisible] = useState('')
     const[dropdownCountriesVisible, setDropdownCountriesVisible] = useState('')
     
@@ -24,7 +25,8 @@ const Nav1 = () =>{
     return(
         <>
         <nav className='navbar'>
-            <Link to='/home'>Home</Link>
+            <Link to='/'>Home</Link>
+            <Link to='/search' id='searchbar'><SearchBar onSearch={onSearch}/></Link>
             <div className="dropdown">
                 <button className='dropbtn' onClick={handledropdownCategories}>Categories</button>
                 <div className="dropdown-content" style={{display:dropdownCategoriesVisible}}>        

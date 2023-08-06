@@ -1,16 +1,37 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Nav1 from './components/navbar';
 import News from './components/redux';
 import Country from './components/country';
+import Search from './components/search';
+import { useEffect, useState } from 'react';
+import Home from './components/home';
 function App() {
+
+  const[search,setSearch] = useState('');
+    
+  
+  const handleSearch = (query) => {
+    setSearch(query);
+}
+const location = useLocation();
+  useEffect(() => {
+    if (location.pathname !== '/search') {
+      setSearch('');
+    }
+  }, [location]);
+
   return (
     <div className="App">
+      
         <div className="heading">
         <h1>News World</h1>
-        <Nav1 />
+        <Nav1 onSearch={handleSearch}/>
         </div>
         <Routes>
+            <Route path = '/search' element = {<Search searchQuery={search}/>}></Route>
+            <Route path = '/' element = {<Home />}></Route>
+            
             <Route path = '/business' element = {<News category = 'business'/>}></Route>
             <Route path = '/entertainment' element = {<News category = 'entertainment'/>}></Route>
             <Route path = '/general' element = {<News category = 'general'/>}></Route>
@@ -35,7 +56,6 @@ function App() {
             <Route path = '/saudi_arabia' element = {<Country name='sa'/>}></Route>
             <Route path = '/united_states_of_america' element = {<Country name='us'/>}></Route>
         </Routes>
-        
     </div>
   );
 }

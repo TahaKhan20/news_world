@@ -1,16 +1,20 @@
 .App {
   text-align: center;
 }
-
-.heading{
-  background-color:white;
+/* Updated background color for .heading */
+.heading {
+  background-color: #192A56; /* Dark Blue */
   position: fixed;
   height: 100px;
   width: 100%;
-  top:0;
+  top: 0;
+  z-index: 999999;
 }
-.heading h1{
+
+/* Updated styles for .heading h1 */
+.heading h1 {
   text-align: center;
   margin-top: 0.5%;
   font-size: 50px;
+  color: white; /* White text color */
 }
