@@ -1,32 +1,7 @@
-.News {
-    display: inline-block;
-    width: 30%;
-    height: auto;
-    background-color: rgba(255, 200, 222, 0.3);
-    margin: 0 1%;
-    box-sizing: border-box;
-    margin-top: 10%;
+  .page{
+    margin-top: 9%;
   }
   
-  .News .text h1 {
-    font-size: 20px;
-  }
-  .News .image img{
-    width: 380px;
-    height: 200px;
-  }
-  .News .text {
-    width: 90%;
-    height: 80%;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-top: 2%;
-    margin-left: 5%;
-  }
-  
-  .News .text p {
-    overflow: hidden;
-  }
   
   .container {
     width: 100%;
@@ -34,6 +9,43 @@
     justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
-    margin: 2% 1%;
   }
   
+  /* Improved News Section Styling */
+.News {
+  display: inline-block;
+  width: 30%;
+  height: auto;
+  background-color: #202a56; /* Slightly more opaque background */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+  margin: 30px 1.5%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Hover effect */
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+}
+.News a{
+  text-decoration: none;
+}
+.News .text h1 {
+  font-size: 18px; /* Slightly larger font size */
+  margin-bottom: 10px; /* Add spacing below the heading */
+}
+
+.News .image img {
+  max-width: 100%; /* Ensure images fit within their container */
+  height: auto;
+  border-radius: 8px; /* Slight border radius for images */
+}
+
+.News .text {
+  width: 90%;
+  height: auto; /* Adjust height automatically based on content */
+  padding: 10px; /* Increased padding for better spacing */
+  font-size: 15px; /* Slightly larger font size */
+  text-align: left;
+  color: white; /* Darker text color for better readability */
+}

@@ -9,31 +9,37 @@ export default function Items({articles}){
     }
     return groupedArticles;
   };
+  const sortArticlesByImageAvailability = (articles) => {
+    const articlesWithImages = articles.filter(article => article.image !== 'Null');
+    const articlesWithoutImages = articles.filter(article => article.image === 'Null');
+    return [...articlesWithImages, ...articlesWithoutImages];
+  };
 
     return (
-        <>
+        <div className='page'>
         {articles.length > 0 ? (
             <ul>
-              {groupArticlesIntoSetsOfThree(articles).map((articleSet, setIndex) => (
+              {groupArticlesIntoSetsOfThree(sortArticlesByImageAvailability(articles)).map((articleSet, setIndex) => (
                 <div key={setIndex} className='container'>
                   {articleSet.map((article, index) => (
                     <div key={index} className='News'>
+                      <a href='#' onClick={()=> {window.open(article.url, '_blank'); return false;}}>
                       <div className='image'>
                         {article.image !== 'Null' && <img src={article.image} alt={article.heading} />}
                       </div>
                       <div className='text'>
-                        <h1>{article.heading}</h1>
-                        <p>{article.description}</p>
-                        <button onClick={() => window.open(article.url, '_blank')}>See More...</button>
+                      {article.heading !== 'Null' && <h1>{article.heading}</h1>}
+                      {article.description !== 'Null' && <p>{article.description}</p>}
                       </div>
+                      </a>
                     </div>
                   ))}
                 </div>
               ))}
             </ul>
           ) : (
-            <p>No articles available</p>
+            <p><br></br><br></br>No articles available</p>
           )}
-        </>
+        </div>
     )
 }

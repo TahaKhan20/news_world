@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Items from './items';
+const config = require('./config');
 
 function News({ category }) {
   const [articles, setArticles] = useState([]);
@@ -7,7 +8,7 @@ function News({ category }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`https://newsapi.org/v2/top-headlines/sources?category=${category}&apiKey=d2f0916290e74a92aa861efce0d57ef7`);
+        const response = await fetch(`https://newsapi.org/v2/top-headlines/sources?category=${category}&apiKey=${config.NEWS_API_KEY}`);
         const data = await response.json();
 
         if (data.sources && data.sources.length > 0) {
@@ -17,6 +18,7 @@ function News({ category }) {
             image: source.imageURL || 'Null',
             url: source.url || 'Null',
           }));
+
           setArticles(newArticles);
         }
       } catch (error) {
@@ -27,6 +29,7 @@ function News({ category }) {
     fetchData();
   }, [category]);
 
+  
   return (
     <>
       <Items articles={articles} />
