@@ -1,9 +1,8 @@
 .App {
   text-align: center;
 }
-/* Updated background color for .heading */
 .heading {
-  background-color: #192A56; /* Dark Blue */
+  background-color: #192A56;
   position: fixed;
   height: 100px;
   width: 100%;
@@ -11,10 +10,9 @@
   z-index: 999999;
 }
 
-/* Updated styles for .heading h1 */
 .heading h1 {
   text-align: center;
   margin-top: 0.5%;
   font-size: 50px;
-  color: white; /* White text color */
+  color: white;
 }

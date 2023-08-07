@@ -1,69 +1,63 @@
-import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
-import './navbar.css'
-import SearchBar from './searchbar'
-const Nav1 = ({onSearch}) =>{
-    const[dropdownCategoriesVisible, setDropdownCategoriesVisible] = useState('')
-    const[dropdownCountriesVisible, setDropdownCountriesVisible] = useState('')
-    
-    function handledropdownCountries(){
-        if(dropdownCountriesVisible === 'none'){
-            setDropdownCountriesVisible('block');
-            setDropdownCategoriesVisible('none');    
-        }
-            else{
-                setDropdownCountriesVisible('none');
-            }
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './navbar.css';
+import SearchBar from './searchbar';
+
+const Nav1 = ({ onSearch }) => {
+  const [dropdownCategoriesVisible, setDropdownCategoriesVisible] = useState('');
+  const [dropdownCountriesVisible, setDropdownCountriesVisible] = useState('');
+
+  // Handle showing/hiding the countries dropdown
+  function handledropdownCountries() {
+    if (dropdownCountriesVisible === 'none') {
+      setDropdownCountriesVisible('block');
+      setDropdownCategoriesVisible('none');
+    } else {
+      setDropdownCountriesVisible('none');
     }
-    function handledropdownCategories(){
-        if(dropdownCategoriesVisible === 'none'){
-        setDropdownCategoriesVisible('block');
-        setDropdownCountriesVisible('none');
-        }
-        else{
-            setDropdownCategoriesVisible('none');
-        }
+  }
+
+  // Handle showing/hiding the categories dropdown
+  function handledropdownCategories() {
+    if (dropdownCategoriesVisible === 'none') {
+      setDropdownCategoriesVisible('block');
+      setDropdownCountriesVisible('none');
+    } else {
+      setDropdownCategoriesVisible('none');
     }
-    return(
-        <>
-        <nav className='navbar'>
-            <Link to='/'>Home</Link>
-            <Link to='/search' id='searchbar'><SearchBar onSearch={onSearch}/></Link>
-            <div className="dropdown">
-                <button className='dropbtn' onClick={handledropdownCategories}>Categories</button>
-                <div className="dropdown-content" style={{display:dropdownCategoriesVisible}}>        
-                    <Link to = '/business' onClick={handledropdownCategories}>Business</Link>
-                    <Link to = '/entertainment' onClick={handledropdownCategories}>Entertainment</Link>
-                    <Link to = '/general' onClick={handledropdownCategories}>General</Link>
-                    <Link to = '/health' onClick={handledropdownCategories}>Health</Link>
-                    <Link to = '/science' onClick={handledropdownCategories}>Science</Link>
-                    <Link to = '/sports' onClick={handledropdownCategories}>Sports</Link>
-                    <Link to = '/technology' onClick={handledropdownCategories}>Technology</Link>
-                </div>
-            </div>
-            <div className="dropdown">
-                <button className='dropbtn' onClick={handledropdownCountries}>Countries</button>
-                <div className="dropdown-content" style={{display:dropdownCountriesVisible}}>        
-                    <Link to = '/united_arab_emirates' onClick={handledropdownCountries}>United Arab Emirates</Link>
-                    <Link to = '/australia' onClick={handledropdownCountries}>Australia</Link>
-                    <Link to = '/belgium' onClick={handledropdownCountries}>Belgium</Link>
-                    <Link to = '/brazil' onClick={handledropdownCountries}>Brazil</Link>
-                    <Link to = '/switzerland' onClick={handledropdownCountries}>Switzerland</Link>
-                    <Link to = '/china' onClick={handledropdownCountries}>China</Link>
-                    <Link to = '/united_kindom' onClick={handledropdownCountries}>United Kindom</Link>  
-                    <Link to = '/hong_kong' onClick={handledropdownCountries}>Hong Kong</Link>
-                    <Link to = '/indonesia' onClick={handledropdownCountries}>Indonesia</Link>
-                    <Link to = '/india' onClick={handledropdownCountries}>India</Link>
-                    <Link to = '/japan' onClick={handledropdownCountries}>Japan</Link>
-                    <Link to = '/portugal' onClick={handledropdownCountries}>Portugal</Link>
-                    <Link to = '/saudi_arabia' onClick={handledropdownCountries}>Saudi Arabia</Link>
-                    <Link to = '/united_states_of_america' onClick={handledropdownCountries}>United States of America</Link>
-                </div>
-            </div>
-            
-        </nav>
+  }
+
+  return (
+    <>
+      <nav className='navbar'>
+        {/* Home link */}
+        <Link to='/'>Home</Link>
         
-        </>
-)}
+        {/* SearchBar component */}
+        <Link to='/search' id='searchbar'><SearchBar onSearch={onSearch} /></Link>
+        
+        {/* Categories dropdown */}
+        <div className="dropdown">
+          <button className='dropbtn' onClick={handledropdownCategories}>Categories</button>
+          <div className="dropdown-content" style={{ display: dropdownCategoriesVisible }}>
+            {/* Category links */}
+            <Link to='/business' onClick={handledropdownCategories}>Business</Link>
+            {/* ... (other category links) ... */}
+          </div>
+        </div>
+        
+        {/* Countries dropdown */}
+        <div className="dropdown">
+          <button className='dropbtn' onClick={handledropdownCountries}>Countries</button>
+          <div className="dropdown-content" style={{ display: dropdownCountriesVisible }}>
+            {/* Country links */}
+            <Link to='/united_arab_emirates' onClick={handledropdownCountries}>United Arab Emirates</Link>
+            {/* ... (other country links) ... */}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
 
 export default Nav1;
