@@ -57,7 +57,7 @@
     justify-content:center;  
     color: white;
     padding: 4px 5px;
-    background-color: #58bcff;
+    background-color: #0f3e97;
     text-decoration: none;
     margin: 2px;
     margin-top: 1px;
@@ -65,8 +65,8 @@
   }
   
   .dropdown-content a:hover {
-    border: 0.1px solid #1188dd;
-    background-color: #0761c7;
+    border: 0.1px solid #0b5b94;
+    background-color: #0a68d3;
   }
   #searchbar{
     padding: 0;

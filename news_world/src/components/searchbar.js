@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import './search.css';
 
-function SearchBar({ onSearch }) { // Rename the prop to onSearch
-    const [searchQuery, setSearchQuery] = useState('');
+function SearchBar({ onSearch }) {
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            // Call the onSearch prop with the searchQuery value
-            onSearch(searchQuery);
-        }
-    };
+  // Prevent default navigation when form is submitted
+  const handleSubmit = (event) => {
+    onSearch(searchQuery);
+  };
 
-    return (
-        <input
-            type='text'
-            className='searchbar'
-            placeholder='Search'
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            onKeyDown={handleKeyDown}
-        />
-    );
+  // Prevent default navigation when input is focused
+  const handleInputClick = (event) => {
+    event.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        className='searchbar'
+        placeholder='Search'
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
+        onClick={handleInputClick}
+      />
+    <button className='btn' onClick={handleSubmit}>Search</button>
+    </form>
+  );
 }
 
 export default SearchBar;

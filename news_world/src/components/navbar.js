@@ -9,7 +9,8 @@ const Nav1 = ({onSearch}) =>{
     function handledropdownCountries(){
         if(dropdownCountriesVisible === 'none'){
             setDropdownCountriesVisible('block');
-            }
+            setDropdownCategoriesVisible('none');    
+        }
             else{
                 setDropdownCountriesVisible('none');
             }
@@ -17,6 +18,7 @@ const Nav1 = ({onSearch}) =>{
     function handledropdownCategories(){
         if(dropdownCategoriesVisible === 'none'){
         setDropdownCategoriesVisible('block');
+        setDropdownCountriesVisible('none');
         }
         else{
             setDropdownCategoriesVisible('none');
